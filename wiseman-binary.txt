@@ -1,0 +1,193 @@
+Binary runs, anti-runs and Stolarsky digits
+27 November 2026
+
+Four OEIS comments by Gus Wiseman, July 2025
+
+Let R(j) and T(j) denote row j of A385817 and A385886, respectively.
+Their row 0 is empty. Write |c| for the number of parts in a row c,
+and sum(c) for their sum. Then
+
+  A083368(j) = first(R(j))                            for j >= 1,
+  A200649(n) = |T(n-1)|                               for n >= 1,
+  A200650(n) = |R(n-1)| - 1                           for n >= 2,
+  A200648(n) = sum(T(n-1)) = sum(R(n-1))              for n >= 2.
+
+The two index restrictions describe the only exceptions. At n=1, the
+OEIS assigns 1 to both A200650 and A200648, while the row expressions
+give -1 and 0, respectively. The scalar entries state the conjectures
+without that restriction. A385817 already mentions omitting the empty
+row when discussing its length. A083368 below uses the changed-bit
+definition given in its historical name and example, which reproduces
+its table. Its July 2025 short title, if read literally as a highest
+set bit, disagrees with the table; that position would be nondecreasing.
+
+1. First occurrences of compositions
+
+Given a nonnegative integer, read the positions of its binary ones from
+least significant to most significant. Consecutive positions in this list
+are separated by a gap of either 1 or at least 2. For runs, keep positions
+together at a gap of 1, and split at larger gaps. For anti-runs, split at
+a gap of 1, and keep positions together at larger gaps. Record the group
+sizes. For each construction, run through the nonnegative integers,
+retaining only the first occurrence of each composition.
+
+A nonempty composition specifies for each gap whether it equals 1 or
+is at least 2. Its smallest representative puts the first one at bit 0
+and makes each gap as small as allowed. Indeed every position of a one
+in any other representative is at least the corresponding position in
+this representative. Thus both tables have the same increasing list of
+representatives: 0 followed by every binary word that starts and ends
+with 1 and contains no 00. Denote this list by C_0,C_1,... . It begins
+0,1,3,5,7,11,13,15. The two tables give different compositions of
+the same number of ones in each C_j.
+
+Write B_0,B_1,... = 0,1,2,3,5,6,7,... for all numbers having no 00,
+including 0. With the published offset, B_j = A003754(j+1).
+Appending a final 1 gives C_j = 2B_(j-1)+1 for j>=1 (append to the
+empty word for B_0). Let B_(j-1) end in k ones, with k=0 for B_0.
+To form B_j, increase the bit at position k+1, counted from 1 at the
+least significant bit, and replace the k lower bits by the least
+admissible suffix. Ordinary increment already carries into position
+k+1. The higher bits can be retained since that position is now 1,
+which admits a suffix of every length, for instance alternating 0 and
+1. The numerically least such suffix gives the immediate successor.
+The highest changed position is therefore k+1. The first part of
+R(j) counts the trailing ones of C_j and equals k+1. This proves the
+assertion in A083368.
+
+2. The statistic common to the two tables and the Stolarsky code
+
+For n>=2 let d be the binary length of C_(n-1) and z its number of
+zeros. Its number of one-bits is d-z. Each zero is isolated and accounts
+for exactly one separating gap between runs. Thus
+
+  |R(n-1)| = z+1,     |T(n-1)| = d-2z,     both row sums = d-z.
+
+For the middle identity, start with d-z singleton groups and join the two
+ones on either side of each of the z zeros. We show the Stolarsky code
+of n has z zeros and d-2z ones.
+
+Let F_0=0, F_1=1, F_(i+2)=F_(i+1)+F_i and phi=(1+sqrt(5))/2.
+There are F_d canonical words of length d: the counts for lengths 1
+and 2 are both 1, and words of length d>=3 have the form 10u or 1v,
+with u and v canonical of lengths d-2 and d-1, respectively.
+Consequently level d consists of the indices
+
+  F_(d+1) < n <= F_(d+2).
+
+In Mongoven's definition, 1 is the empty code. Set
+
+  U(m) = round(phi*m),        V(m) = floor(phi^2*m - phi/2).
+
+The code of U(m) appends 1 to that of m. The code of V(m) appends 0
+for m>=2; V(1)=1 is the root. These increasing maps give complementary
+lists for m>=1. Indeed the counts up to any integer N>=1 are the floors
+of (N+1/2)/phi and (N+1+phi/2)/phi^2, respectively. The two arguments
+are nonintegral with sum N+1, so their floors sum to N. Taking successive
+differences proves complementarity (both counts are zero at N=0).
+
+Put psi=-1/phi. Induction gives F_(j+1)-phi*F_j=psi^j, so U(F_j)
+=F_(j+1) for j>=2. By complementarity, exactly F_j values of V are at
+most F_(j+2), for j>=2. Hence U sends level d into level d+1 and V sends
+it into level d+2. U(1)=2 is in level 1. Induction therefore shows that
+the number of ones plus twice the number of zeros in each code is d.
+
+The zero count can already be identified from the Fibonacci block rule
+recorded in A200650 by Daniel Forgues in 2015. In a level d>=3, first
+come all words 10u, with an additional zero, and then all words 1v.
+This gives exactly his block recurrence, with matching one-term base
+blocks at d=1 and 2. Section 3 proves the zero count directly from
+Mongoven's definition as well, independently of this earlier rule.
+
+It follows that the code has z zeros, d-2z ones, and length d-z.
+The displayed identities follow, with the initial cases checked above.
+
+3. Direct proof of the zero count
+
+The descending rank h of the word for index n in its level is
+h=F_(d+2)-n, in [0,F_d). In standard Zeckendorf notation an integer is
+written as a sum of distinct F_i with i>=2 and no consecutive indices.
+The summands of h are exactly F_(j+1) for the zero-bit positions j of
+C_(n-1), numbering from 0 on the right. For d>=2, allowable j range
+from 1 through d-2 and are nonconsecutive. The allowed subsets of
+indices 2,...,k give all integers from 0 to F_(k+1)-1 in increasing
+order of their largest differing index. Indeed subsets omitting k give
+[0,F_k), and those using it give F_k+[0,F_(k-1)), by induction
+starting with the empty set. Thus larger zero masks correspond to
+larger h and to smaller binary words. For d=1 both h and z are zero.
+Write Z(h) for the number of Zeckendorf summands, so Z(h)=z.
+
+For any h with summand index set I, let S(h) replace every F_i by
+F_(i+1), and let e=S(h)-phi*h. Then
+
+  e = sum over i in I of psi^i,          S(S(h)) = phi^2*h + e.
+
+Summing the geometric series of the even or odd powers gives
+
+  -phi^(-2) < e < phi^(-1).
+  If 2 is absent from I, then e < phi^(-3).
+  If 2 belongs to I, then e > phi^(-2) - phi^(-4).
+
+For the last bound, including 2 excludes 3, so possible negative
+terms start at the fifth power. All three inequalities follow by
+extending the finite index set to all powers of the indicated parity.
+
+Take a parent index m in level d and h=F_(d+2)-m. Set delta=psi^(d+2).
+The ranks of its children in their respective levels are
+
+  h1 = F_(d+3)-U(m) = S(h)    + round(delta-e),
+  h0 = F_(d+4)-V(m) = S(S(h)) + ceil(delta+phi/2-e).
+
+These identities follow by inserting the definitions, using
+F_(d+4)-phi^2*F_(d+2)=F_(d+3)-phi*F_(d+2)=delta.
+For d>=4 we have |delta|<=phi^(-6)<0.056. For reference,
+1.618<phi<1.619 follows by squaring the two bounds for sqrt(5).
+The preceding inequalities place delta-e strictly between -0.676
+and 0.439. Hence its nearest integer is 0 or -1. If 2 is absent
+from I the lower bound improves to -0.293, giving 0. In the case
+-1, the smallest summand of S(h) is F_3=2. Replacing it by F_2=1
+is admissible and preserves the number of summands. Thus Z(h1)=Z(h).
+
+Similarly 0.13 < delta+phi/2-e < 1.25, so the amount added to
+S(S(h)) is F_2=1 or F_3=2. All existing summands have index at least
+4, so adding F_2 is admissible. If 2 belongs to I, the last bound on
+e shows delta+phi/2-e<0.64, forcing F_2. Thus whenever F_3 is added,
+all existing summands have index at least 5. In both cases, Z(h0)=Z(h)+1.
+
+The smaller parent levels are covered by this table. The two child
+ranks are computed in levels d+1 and d+2, respectively.
+
+  m    d    h     U(m)   h1     V(m)   h0
+  2    1    0       3     0       4     1
+  3    2    0       5     0       7     1
+  4    3    1       6     2       9     4
+  5    3    0       8     0      12     1
+
+Here 2=F_3 and 4=F_4+F_2. Starting from m=2, which has one digit 1
+and h=0, all n>=2 are obtained by the two child rules: each has a
+unique parent by complementarity and both maps strictly increase
+for m>=2. Induction proves that Z(h) counts the zero digits in the
+Stolarsky code, as required.
+
+Sources, earlier results, and reproduction
+
+The four statements and the two tables are published in the OEIS:
+https://oeis.org/A083368  https://oeis.org/A200649
+https://oeis.org/A200650  https://oeis.org/A200648
+https://oeis.org/A385817  https://oeis.org/A385886
+Casey Mongoven's description gives the two successor maps and the root:
+https://oeis.org/A200648/a200648.txt
+The earlier Fibonacci block rule appears in A200650, 7 May 2015.
+Hinz and Stockmeyer enumerate the same canonical words as A247648 and
+give C_j=2B_(j-1)+1 in another setting, J. Integer Sequences 25
+(2022), article 22.4.8, section 2.2:
+https://cs.uwaterloo.ca/journals/JIS/VOL25/Hinz/hinz5.pdf
+The prior-work search located these ingredients. The cited entries
+continue to label Wiseman's four identifications as conjectures.
+Mathematical priority has not been established.
+
+Run "python verify_wiseman.py" alongside this file. The script directly
+removes duplicate rows for the 131072 integers 0 through 131071, checks
+A083368 through j=4180, and compares the exact inverse Stolarsky
+recursion with both tables through n=121393. The universal claims
+follow from the proofs above.

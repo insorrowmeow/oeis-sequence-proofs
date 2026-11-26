@@ -1,0 +1,164 @@
+Standard composition ranks and Kimberling's Wythoff words
+Companion to wiseman-binary.txt, 27 November 2026
+
+1. Standard ranks of the anti-run compositions
+
+Let T(j) be row j of A385886. Its standard composition rank equals
+A348366(j) for every j>=0. This resolves the proposed identification in
+the cross-references of A385886 and A385818. It also proves Mikhail
+Kurkov's recurrence in A200649, where it is marked for verification.
+
+For c=(c_1,...,c_s), let t_1,...,t_s be the successive partial sums
+of the reversed composition. Its standard rank is
+
+  K(c) = sum over i of 2^(t_i-1),       K(empty)=0.
+
+Appending a new part 1 to c therefore changes K to 2K+1. Increasing
+its last part by one changes K to 2K. For a nonempty canonical word
+C_j, let D(j) be its length. Section 2 of the companion proof gives
+
+  F_(d+1) <= j < F_(d+2)  for D(j)=d.
+
+Hence D(j)=A072649(j) and F_(D(j))=A130312(j) for j>=1. For d>=3 the
+words at this level, in order, are 10u followed by 1v, with u of length
+d-2 and v of length d-1. Stripping the prefix leaves the same relative
+order across the two parent levels, which begin at F_(d-1). Their
+indices are j'=j-F_d, since F_(d+1)-F_(d-1)=F_d. At d=2 there is just
+the word 11 with parent 1 at j'=1.
+
+Relative to the parent, the new most significant one either follows a
+gap of 2 (prefix 10) or a gap of 1 (prefix 1). In the former case it
+extends the final anti-run; in the latter case it starts a new one.
+Consequently, for j>=2,
+
+ K(T(j)) = 2 K(T(j')) + ((D(j)-D(j')) mod 2).
+
+The initial ranks at j=0 and 1 are 0 and 1. This is exactly the
+defining recurrence and the initial values of A348366. Moreover the
+number of parts of T(j) is the number of ones in the binary expansion
+of its rank. Thus it increases by the same parity term relative to
+T(j'). Substituting |T(j)|=A200649(j+1) from the companion theorem
+gives the verification requested in A200649.
+
+2. Wythoff words and the offset in A341259
+
+The scalar sequences satisfy
+
+  A341259(k) = A200649(k+2) - 1,        k>=1,
+  A117479(k) = A200650(k+2),            k>=1.
+
+The offset in the first equality resolves the suggested identification
+in A341259 and A200650. The second answers R. J. Mathar's question
+in A200650 about its relationship to A117479. At k=0 the second
+equality fails, since A117479(0)=1 and A200650(2)=0.
+
+Write W_k for Kimberling's words in A341258; the initial words
+are W_1=0 and W_2=1. For k>=1 the lower Wythoff child has index
+floor(phi*(k+1)) and word 0W_k. The upper child has index
+floor(phi^2*(k+1)) and word 1W_k. Indeed the count of earlier members
+of the respective Beatty sequence at its (k+1)-st term is k, exactly
+the parent rule of A341258. These children and the two initial words
+cover all positive indices. A341259 counts the zero digits of W_k.
+
+Use N=k+2. In this indexing the two child indices become
+
+  L=floor(phi*N+phi^(-2)),     H=floor(phi^2*N-phi^(-1)).
+
+Use d, h=F_(d+2)-N, S and e=S(h)-phi*h as in section 3 of the
+companion. Here N>=3, so d>=2. The summand indices of h are <=d-1.
+Using this bound gives
+
+  delta-phi^(-2) < e < delta+phi^(-1),     delta=(-1/phi)^(d+2).
+
+Indeed the untruncated supremum of e obtained from all even powers
+starting at 2 is phi^(-1), while its infimum from all odd powers
+starting at 3 is -phi^(-2). At least the even index and the odd index
+among d,d+1 are missing. Each missing term has absolute value greater
+than |delta|. This proves both improved bounds.
+
+Substituting the child indices gives the exact integer ranks
+
+ F_(d+3)-L = S(h)    + ceil(delta-phi^(-2)-e) = S(h),
+ F_(d+4)-H = S(S(h)) + ceil(delta+phi^(-1)-e) = S(S(h))+1.
+
+The first ceiling has argument strictly between -1 and 0. The second
+argument is one more. The largest possible summand index in S(h) is d,
+and in S(S(h))+1 it is at most d+1. The new F_2 in the latter sum is
+isolated because all the shifted indices are at least 4. These are
+therefore valid descending ranks in levels d+1 and d+2. If z is the
+number of summands of h, the two children have respective counts z and
+z+1. The quantity d-2z-1 increases by 1 at the lower child and stays
+fixed at the upper child. The quantity z stays fixed at the lower
+child and increases by 1 at the upper child.
+
+The initial indices N=3 and 4 have (d,z)=(2,0) and (3,1), respectively.
+Their words have (zero count,one count)=(1,0) and (0,1). Induction gives
+
+   zero count of W_k = d-2z-1,       one count of W_k = z.
+
+The companion theorem gives A200649(N)=d-2z and A200650(N)=z.
+This proves the first identification.
+
+For the second, the canonical word is C_(N-1)=2B_k+1. Thus its z zeros
+are exactly the zeros in B_k. The binary word B_k is the maximal
+Fibonacci expansion of k, whose zero count defines A117479(k). To see
+the identification directly, give bit position j weight F_(j+2).
+Starting from the usual Zeckendorf expansion of k, rewriting 100 as
+011 preserves weight and increases the number of summands. Every
+step decreases the binary integer, and a terminal word, after removing
+leading zeros, has no 00. For words of each fixed length b beginning
+with 1 and having no 00, complementation of their lower b-1 bits
+produces all admissible Zeckendorf masks of indices 2 through b.
+Their bitweights consequently cover F_(b+3)-2-[0,F_(b+1)) in
+increasing order of the binary words (the all-ones word has weight
+F_(b+3)-2). The resulting intervals are consecutive as b increases.
+Thus the word of weight k is uniquely B_k. Starting with any expansion
+and running the same terminating rule reaches it, which proves that
+it has the maximum number of summands. This proves the second identity.
+
+Primary sources and checks
+
+The standard ranks and the claimed identification are given at
+https://oeis.org/A385886 and https://oeis.org/A385818
+The recurrence and both parameter sequences are at
+https://oeis.org/A348366  https://oeis.org/A072649  https://oeis.org/A130312
+Kurkov's proposed scalar recurrence appears at https://oeis.org/A200649
+Kimberling's words and the observation on zero counts are at
+https://oeis.org/A341258 and https://oeis.org/A341259
+Mathar's question and the maximal Fibonacci statistic appear at
+https://oeis.org/A200650 and https://oeis.org/A117479
+
+Run "python verify_wiseman.py". It compares the composition formula
+with the original recurrence through j=121392 and compares the two
+Wythoff-word counts and maximal Fibonacci statistic through k=100000.
+
+3. A counterexample inside the A385886 table
+
+A385886 proposes A001911 minus 2 for the positions of rows whose parts
+are all 1. Row 7 is (1,1,1,1). It first appears at the integer 15, with
+binary expansion 1111. The stated candidate has terms F_(k+3)-4.
+Obtaining 7 or 8 would require a Fibonacci number equal to 11 or 12.
+Both fall strictly between F_6=8 and F_7=13, so this example works
+for row index 7 and also for ordinal position 8 if row 0 is counted.
+
+The exact nonempty row indices are F_(d+2)-1 for d>=1, beginning
+1,2,4,7,12,20. Indeed all anti-runs are singletons precisely when every
+gap between one-bits is 1. The canonical word is then the all-ones word
+of length d, the largest member of its length level. Its index is
+F_(d+2)-1 by section 1. One-based ordinal positions are F_(d+2).
+
+The adjacent observation about singleton rows also follows. For the
+one-part row (r), every gap in the canonical word has size 2, so the
+word is 101...01 of length 2r-1. It is the least word of that length:
+each zero is chosen at the earliest position where it is allowed.
+Its zero-based row index is therefore F_(2r), for every r>=1.
+
+Source for the proposed relation and the explicit row:
+https://oeis.org/A385886
+Source for A001911(k)=F_(k+3)-2:
+https://oeis.org/A001911
+Lean 4.19.0 verifies AntiRunWitness.lean with the standard library.
+The theorem counterexample constructs the row by scanning the bits of
+integers up to 15, deduplicates all earlier rows and excludes the
+proposed values for every k. Its reported axioms are propext and
+Quot.sound. The classification for all d is proved above on paper.
