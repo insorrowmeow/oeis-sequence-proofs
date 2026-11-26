@@ -1,6 +1,6 @@
 name = "sequenceResults"
 version = "0.1.0"
-defaultTargets = ["QuarterGaps", "IndexPermutations", "DoubleHalf", "TrinomialRecurrence", "FrohlichWitness", "FrohlichNative"]
+defaultTargets = ["QuarterGaps", "IndexPermutations", "DoubleHalf", "TrinomialRecurrence", "FrohlichWitness", "FrohlichNative", "Israel", "MurthyDigits", "NarayanaPisot"]
 
 [[require]]
 name = "mathlib"
@@ -24,3 +24,39 @@ name = "FrohlichWitness"
 
 [[lean_lib]]
 name = "FrohlichNative"
+
+[[lean_lib]]
+name = "InverseBase"
+
+[[lean_lib]]
+name = "InversePrefix"
+
+[[lean_lib]]
+name = "Israel"
+
+[[lean_lib]]
+name = "MurthyDigits"
+
+[[lean_lib]]
+name = "NarayanaPisot"
+
+[[lean_lib]]
+name = "P16R11"
+
+[[lean_lib]]
+name = "P16R3"
+
+[[lean_lib]]
+name = "P4R0"
+
+[[lean_lib]]
+name = "P4R2"
+
+[[lean_lib]]
+name = "P8R1"
+
+[[lean_lib]]
+name = "P8R5"
+
+[[lean_lib]]
+name = "P8R7"
