@@ -1,0 +1,24 @@
+A048590 delta n0 80 stride 32 rule (32811, -98872935, 541794363036, -27397692593295, 2990106818885, -589412474088, 11615991594, -19558041, 3282, -1) ratio interval (24608, 41014)
+A048590 gap n0 80 stride 32 rule (32812, -98905746, 541893235971, -27939486956331, 30387799412180, -3579519292973, 601028465682, -11635549635, 19561323, -3283, 1) ratio interval (24609, 41015)
+A048590 verified for every n >= 6
+A048592 delta n0 80 stride 32 rule (32811, -98872935, 541794363036, -27397692593295, 2990106818885, -589412474088, 11615991594, -19558041, 3282, -1) ratio interval (24608, 41014)
+A048592 gap n0 80 stride 32 rule (32812, -98905746, 541893235971, -27939486956331, 30387799412180, -3579519292973, 601028465682, -11635549635, 19561323, -3283, 1) ratio interval (24609, 41015)
+A048592 verified for every n >= 6
+A048591 delta n0 80 stride 16 rule (447, 2271, 205247, 2271, 447, -1) ratio interval (335, 559)
+A048591 gap n0 80 stride 16 rule (448, 1824, 202976, -202976, -1824, -448, 1) ratio interval (336, 560)
+A048591 verified for every n >= 4
+A048587 delta n0 80 stride 8 rule (95, -545, 8127, -545, 95, -1) ratio interval (71, 119)
+A048587 gap n0 80 stride 8 rule (96, -640, 8672, -8672, 640, -96, 1) ratio interval (72, 120)
+A048587 verified for every n >= 4
+A020736 delta n0 80 stride 8 rule (95, -545, 8127, -545, 95, -1) ratio interval (71, 119)
+A020736 gap n0 80 stride 8 rule (96, -640, 8672, -8672, 640, -96, 1) ratio interval (72, 120)
+A020736 verified for every n >= 4
+A048580 delta n0 80 stride 1 rule (2,) ratio interval (2, 2)
+A048580 gap n0 80 stride 4 rule (152, -2192, 256) ratio interval (114, 190)
+A048580 verified for every n >= 2
+A048585 delta n0 80 stride 16 rule (447, 2271, 205247, 2271, 447, -1) ratio interval (335, 559)
+A048585 gap n0 80 stride 16 rule (448, 1824, 202976, -202976, -1824, -448, 1) ratio interval (336, 560)
+A048585 verified for every n >= 4
+A048589 delta n0 80 stride 16 rule (447, 2271, 205247, 2271, 447, -1) ratio interval (335, 559)
+A048589 gap n0 80 stride 16 rule (448, 1824, 202976, -202976, -1824, -448, 1) ratio interval (336, 560)
+A048589 verified for every n >= 4
