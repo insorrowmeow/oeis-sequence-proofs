@@ -1,6 +1,6 @@
 name = "sequenceResults"
 version = "0.1.0"
-defaultTargets = ["QuarterGaps", "IndexPermutations", "DoubleHalf", "TrinomialRecurrence", "FrohlichWitness", "FrohlichNative", "Israel", "MurthyDigits", "NarayanaPisot", "AntiRunWitness", "Hasler", "FrayedRope", "PartitionPeriods", "Tetrastix"]
+defaultTargets = ["QuarterGaps", "IndexPermutations", "DoubleHalf", "TrinomialRecurrence", "FrohlichWitness", "FrohlichNative", "Israel", "MurthyDigits", "NarayanaPisot", "AntiRunWitness", "Hasler", "FrayedRope", "PartitionPeriods", "Tetrastix", "Sun", "Kimberling", "Mathar", "RemainderSum"]
 
 [[require]]
 name = "mathlib"
@@ -75,3 +75,15 @@ name = "PartitionPeriods"
 
 [[lean_lib]]
 name = "Tetrastix"
+
+[[lean_lib]]
+name = "Sun"
+
+[[lean_lib]]
+name = "Kimberling"
+
+[[lean_lib]]
+name = "Mathar"
+
+[[lean_lib]]
+name = "RemainderSum"
