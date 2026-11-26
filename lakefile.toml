@@ -1,0 +1,26 @@
+name = "sequenceResults"
+version = "0.1.0"
+defaultTargets = ["QuarterGaps", "IndexPermutations", "DoubleHalf", "TrinomialRecurrence", "FrohlichWitness", "FrohlichNative"]
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4.git"
+rev = "c44e0c8ee63ca166450922a373c7409c5d26b00b"
+
+[[lean_lib]]
+name = "QuarterGaps"
+
+[[lean_lib]]
+name = "IndexPermutations"
+
+[[lean_lib]]
+name = "DoubleHalf"
+
+[[lean_lib]]
+name = "TrinomialRecurrence"
+
+[[lean_lib]]
+name = "FrohlichWitness"
+
+[[lean_lib]]
+name = "FrohlichNative"
