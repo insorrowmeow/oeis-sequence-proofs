@@ -44,8 +44,8 @@ Open a problem title for its proof or computation. The last column links to the 
 | [Wythoff words and index shifts](composition-rank-and-wythoff.txt)<br>[A341259](https://oeis.org/A341259) · [A117479](https://oeis.org/A117479) · [A200649](https://oeis.org/A200649) · [A200650](https://oeis.org/A200650) | For k ≥ 1, A341259(k) = A200649(k+2) − 1 and A117479(k) = A200650(k+2). | ⬜ Written proof |
 | [Kotěšovec’s column asymptotic](A385001.txt)<br>[A385001](https://oeis.org/A385001) | For every fixed positive column k, a lattice-point count gives its partial-sum asymptotic with error $O_k(N^{2k-1}\log(2N))$. | ⬜ Written proof |
 | [Sharma’s visible lattice points](visibility-proof.ru.txt)<br>[A401897](https://oeis.org/A401897) · [A401675](https://oeis.org/A401675) | The square and hexagonal spiral counts have leading terms $48n/π^2$ and $6n/π^2$, respectively, with error $O(\sqrt n\log(n+1))$. | ⬜ Written proof |
-| [Rank-four matroids · sufficient conditions](results/rank-four-interlacing.txt) | The dual Chow and dual right augmented Chow roots strictly interlace if line sizes are constant or every line lies in the same number of planes. | ⬜ Written proof |
-| [Rank-four matroids · restrictions and examples](results/rank-four-family.txt) | Failure requires a plane with at least seven points and positive covariance between the number of planes through a line and its size-dependent weight. An explicit family approaches equality from the interlacing side. [Covariance identity](results/covariance.txt) | ⬜ Written proof |
+| [Finite simple rank-four matroids · sufficient conditions](results/rank-four-interlacing.txt) | The dual Chow and dual right augmented Chow roots strictly interlace if line sizes are constant or every line lies in the same number of planes. | ⬜ Written proof |
+| [Finite simple rank-four matroids · restrictions and examples](results/rank-four-family.txt) | Failure requires a plane with at least seven points and positive covariance between the number of planes through a line and its size-dependent weight. An explicit family approaches equality from the interlacing side. [Covariance identity](results/covariance.txt) | ⬜ Written proof |
 
 ## Reproduce
 
@@ -58,6 +58,6 @@ lake build
 
 To inspect the axioms of a particular proof, run its source file, for example `lake env lean Sun.lean` or `lake env lean AntiRunWitness.lean`. The Fröhlich witness uses Lean’s native evaluator and the additional axiom `Lean.ofReduceBool`. The minimality search and the certificate for the 30 examples are separate computations. [Minimality search](frohlich.py) · [Family certificate](family_certificate.py)
 
-Mathematical discovery, writing and formalization used AI assistance. The notes cite prior results, including the earlier permutation argument in A050132, the spectral formula for esthetic numbers and MacMahon’s divisor sums. The final two entries prove statements for specified rank-four matroids. Their scope is given in the proofs.
+Mathematical discovery, writing and formalization used AI assistance. The notes cite prior results, including the earlier permutation argument in A050132, the spectral formula for esthetic numbers and MacMahon’s divisor sums. Historical priority is undetermined where no earlier proof is cited.
 
 [Standalone proof files from 27 November](oeis-proofs-2026-11-27.zip) · [Collection with the standalone Israel project](oeis-proofs-nov26-round3.zip) · [Earlier computation scripts](results/README.md)
