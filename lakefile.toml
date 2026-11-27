@@ -9,57 +9,74 @@ rev = "c44e0c8ee63ca166450922a373c7409c5d26b00b"
 
 [[lean_lib]]
 name = "QuarterGaps"
+srcDir = "proofs/early"
 
 [[lean_lib]]
 name = "IndexPermutations"
+srcDir = "proofs/early"
 
 [[lean_lib]]
 name = "DoubleHalf"
+srcDir = "proofs/early"
 
 [[lean_lib]]
 name = "TrinomialRecurrence"
+srcDir = "proofs/early"
 
 [[lean_lib]]
 name = "FrohlichWitness"
+srcDir = "proofs/early"
 
 [[lean_lib]]
 name = "FrohlichNative"
+srcDir = "proofs/early"
 
 [[lean_lib]]
 name = "InverseBase"
+srcDir = "proofs/early"
 
 [[lean_lib]]
 name = "InversePrefix"
+srcDir = "proofs/early"
 
 [[lean_lib]]
 name = "Israel"
 
 [[lean_lib]]
 name = "MurthyDigits"
+srcDir = "proofs/early"
 
 [[lean_lib]]
 name = "NarayanaPisot"
+srcDir = "proofs/early"
 
 [[lean_lib]]
 name = "P16R11"
+srcDir = "proofs/early"
 
 [[lean_lib]]
 name = "P16R3"
+srcDir = "proofs/early"
 
 [[lean_lib]]
 name = "P4R0"
+srcDir = "proofs/early"
 
 [[lean_lib]]
 name = "P4R2"
+srcDir = "proofs/early"
 
 [[lean_lib]]
 name = "P8R1"
+srcDir = "proofs/early"
 
 [[lean_lib]]
 name = "P8R5"
+srcDir = "proofs/early"
 
 [[lean_lib]]
 name = "P8R7"
+srcDir = "proofs/early"
 
 [[lean_lib]]
 name = "AntiRunWitness"
@@ -69,21 +86,27 @@ name = "Hasler"
 
 [[lean_lib]]
 name = "FrayedRope"
+srcDir = "proofs/early"
 
 [[lean_lib]]
 name = "PartitionPeriods"
+srcDir = "proofs/early"
 
 [[lean_lib]]
 name = "Tetrastix"
+srcDir = "proofs/early"
 
 [[lean_lib]]
 name = "Sun"
 
 [[lean_lib]]
 name = "Kimberling"
+srcDir = "proofs/early"
 
 [[lean_lib]]
 name = "Mathar"
+srcDir = "proofs/early"
 
 [[lean_lib]]
 name = "RemainderSum"
+srcDir = "proofs/early"
