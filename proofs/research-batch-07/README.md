@@ -1,0 +1,14 @@
+# Decimal reversal, enumeration and periodicity
+
+| Original statement | Result | Lean coverage |
+| --- | --- | --- |
+| [Ezerman, Meyer and Solé, Conjecture 4, p. 5](https://cs.uwaterloo.ca/journals/JIS/VOL18/Ezerman/eze3.pdf#page=5) | [Two counterexamples and an infinite family of palindromic pairs with carries](digits/PolynomialPairs.md). | [The negated conjecture and witnesses for every parameter](digits/PolynomialPairs.lean). |
+| [OEIS A161721](https://oeis.org/A161721) | [At most one digit 2 occurs in each qualifying prime](digits/ReverseProducts.md). This follows from the published carry criterion. | [Symmetric carries and the digit-square bound](digits/SymmetricCarries.lean). Prime divisibility and the central-column identification are written. |
+| [MathOverflow 487169](https://mathoverflow.net/questions/487169) | [The least period of A001040 modulo N is N or 2N, and the even-indexed terms have least period N for odd N](combinatorics/ContinuantPeriods.md). | [Both general theorems](combinatorics/ContinuantPeriods.lean). |
+| [OEIS A380962](https://oeis.org/A380962) | [The rational generating function for perimeter-magic squares proves the conjectured order-34 recurrence](geometry/perimeter-magic.md). | [Exact arithmetic certificate for the cleared generating function](geometry/PerimeterMagic.lean). The geometry, inclusion–exclusion and coefficient-bound argument are written. |
+| [OEIS A401673](https://oeis.org/A401673) | [Last two coefficients of the tiling polynomial, extended to all even rectangles](arithmetic/A401673.md). | [Strip and adjacent-swap lemmas and coefficient formulas](arithmetic/DomiculeStrips.lean). The geometric bijections are written. |
+| [MathOverflow 492609](https://mathoverflow.net/questions/492609) | [Proof of the in-place algorithm for labeled mobiles](combinatorics/MobileAlgorithm.md). | [Accumulator identity and finite check](combinatorics/RowAlgorithms.lean). The inverse-series argument is written. |
+| [MathOverflow 492866](https://mathoverflow.net/questions/492866) | [Counterexample to the printed summation limit and proof of the corrected full-row algorithm](combinatorics/SchroederRowAlgorithm.md). | [The fourth row and the counterexample](combinatorics/RowAlgorithms.lean). The all-row argument is written. |
+| [OEIS A401895](https://oeis.org/A401895) | [Partial. Any further repdigit solution has at least 701 digits, has length divisible by 33, and produces only sixes](digits/ReverseProducts.md). | [The carry induction and the extreme-column inequality](digits/SymmetricCarries.lean). The [exhaustive search](digits/check_repdigit.py) uses integer arithmetic in Python. |
+
+Use Lean 4.19.0 and the pinned mathlib revision. Run **lake build** to check the six Lean modules. The accompanying Python checks use the standard library. Sources are linked for the exact formulations and prior contributions. A research priority claim requires a separate literature assessment.

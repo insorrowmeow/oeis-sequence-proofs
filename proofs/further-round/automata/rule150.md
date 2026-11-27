@@ -1,0 +1,7 @@
+# A reversed divisibility in A085588
+
+The August 2024 comment proposes that $M(n)=2^{v_2(n)}(2^{b(n)}-1)$ divides the eventual period $a(n)$ of the rule-150 ring starting with one lit cell. Here $b(n)$ is the eventual period of $1/n$ under the tent map $x\mapsto\min(2x,2-2x)$. [A085588](https://oeis.org/A085588) · [A309786](https://oeis.org/A309786)
+
+At width four the configurations are $0001\to1011\to0001$. The two configurations differ, so the least eventual period is 2. The tent orbit is $1/4\to1/2\to1\to0\to0$, of eventual period 1. Thus $M(4)=4$ and $4\nmid2$. This is the first failure in the entry's domain: at width three the single lit cell becomes the fixed configuration $111$, and $1/3$ reaches the fixed point $2/3$. Thus $M(3)=a(3)=1$.
+
+The reverse divisibility follows from the 1984 paper of Martin, Odlyzko and Wolfram. For odd width greater than one, their Theorem 4.1 bounds the maximum period of a symmetric rule by divisibility into $2^s-1$ where $s$ is the suborder of 2 (the least exponent giving $+1$ or $-1$ modulo the odd width). This agrees with the tent period. Lemma 4.3 gives the additional factor two for each doubling of width. For odd part one, start from the identity rule at width one. This note identifies an inconsistency in the wording of the OEIS comment. The separate conjecture involving A115770 has a different statement. [Primary paper, printed p. 238](https://content.wolfram.com/sw-publications/2020/07/algebraic-properties-cellular-automata.pdf#page=20) · [Lean certificate for the witness](Rule150.lean)

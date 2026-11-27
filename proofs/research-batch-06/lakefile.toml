@@ -1,0 +1,33 @@
+name = "batchSix"
+version = "0.1.0"
+defaultTargets = ["Results"]
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4.git"
+rev = "c44e0c8ee63ca166450922a373c7409c5d26b00b"
+
+[[lean_lib]]
+name = "Results"
+roots = [
+  "arithmetic.FibonacciBitMasks",
+  "arithmetic.HeleniusOrders",
+  "arithmetic.HeleniusPeriods",
+  "arithmetic.MultinacciPeriods",
+  "arithmetic.PythagoreanJumps",
+  "automata.Kernel",
+  "automata.Khrabrov",
+  "automata.PeriodBits",
+  "automata.PeriodLower",
+  "automata.PeriodNecessity",
+  "automata.Rule67",
+  "combinatorics.A260711",
+  "combinatorics.OddDivisorRanks",
+  "geometry.AlexanderssonRows",
+  "geometry.Domino",
+  "geometry.Kagey",
+  "geometry.Polyomino",
+  "spectra.FibonacciBlocks",
+  "spectra.Transfer",
+  "squares.GreedyLocal"
+]
