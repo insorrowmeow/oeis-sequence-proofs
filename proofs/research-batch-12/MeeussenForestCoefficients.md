@@ -1,0 +1,27 @@
+# Meeussen's partition sum and all coefficients of the forest polynomials
+
+Let $g(0,q)=1$ and $\partial_xg(x,q)=g(x,q)^2g(qx,q)$, and set $c_N(q)=N![x^N]g(x,q)$. The full row identity is
+
+$$c_N(q)=\sum_{\lambda\subseteq(N-1,N-2,\ldots,1)} f(\lambda)\,q^{\binom N2-|\lambda|}. \tag{1}$$
+
+Here $f$ is Matt Fayers' function on partitions. It has $f(\varnothing)=1$. For nonempty $\lambda$, take a box $(i,j)$ maximizing $i+j$, delete its first $i$ rows to get $\mu$, and independently delete its first $j$ columns to get $\nu$. Then $f(\lambda)=\binom{i+j}{i}f(\mu)f(\nu)$. [Fayers' definition and Speyer's interpretation](https://mathoverflow.net/questions/132338/a-function-from-partitions-to-natural-numbers-is-it-familiar).
+
+**The conjectured coefficient.** Every partition of $n$ lies in $(n,n-1,\ldots,1)$, since a box $(i,j)$ requires at least $i+j-1$ boxes. Setting $N=n+1$ in (1) gives $[q^{n(n-1)/2}]c_{n+1}(q)=\sum_{|\lambda|=n} f(\lambda)$, proving the 2014 MathOverflow conjecture. More generally the coefficient at distance $n$ from the top of $c_N(q)$ stabilizes to this sum as soon as $N\ge n+1$. OEIS A232434 starts at index one with $1,2,6,14,\ldots$. Its correct indexing is $\mathrm{A232434}(n+1)=\sum_{|\lambda|=n}f(\lambda)$, including the empty partition at $n=0$. [Meeussen's question](https://mathoverflow.net/questions/163235/conjecture-relating-differential-equation-and-sum-of-a-function-over-partitions) · [OEIS A232434](https://oeis.org/A232434) · [OEIS A232433](https://oeis.org/A232433).
+
+## Increasing plane forests
+
+Take an ordered list of rooted plane trees on labels $1,\ldots,N$, increasing from each parent to each child. Give the forest weight $q^D$, where $D$ is the sum of vertex depths and each root has depth zero. The empty forest has weight 1. Label 1 is a root. Removing it and retaining the three ordered forests to its left, among its children, and to its right gives a reversible decomposition. The children forest of size $b$ has every depth reduced by one, contributing the extra factor $q^b$ upon reassembly. Distribute the $N-1$ larger labels among the three forests by a multinomial coefficient. Consequently the exponential generating function of their total weights satisfies $g'=g^2g(qx,q)$, and its initial value uniquely determines every coefficient. This interpretation of the OEIS triangle is due to Miguel Méndez. [Méndez, Example 2.2, *Australasian Journal of Combinatorics* 89 (2024), p. 355](https://ajc.maths.uq.edu.au/pdf/89/ajc_v89_p350.pdf).
+
+To recover the forest shape from a partition, traverse the forest in depth-first order, writing an opening parenthesis at each vertex on entry and a closing parenthesis on exit. Write $h_t$ for the number of closes before the $t$-th open, $1\le t\le N$. Then $0=h_1\le\cdots\le h_N$ and $h_t\le t-1$. Conversely, for any such sequence, insert the $t$-th open immediately after the prescribed number of closes, in order, and append the remaining closes. The bound $h_t\le t-1$ makes the resulting word a balanced parenthesis word. Thus $(h_N,\ldots,h_1)$, with zero parts dropped, is a bijection from shapes to partitions in the staircase. At the $t$-th open there are exactly $t-1-h_t$ unmatched earlier opens, the ancestors of that vertex. Therefore
+
+$$D=\sum_{t=1}^N(t-1-h_t)=\binom N2-|\lambda|.$$
+
+## The number of labellings for a fixed shape
+
+We include the argument identifying the labelling count with $f$ to fix the boundary and indexing of the staircase. It is Speyer's increasing-labelling interpretation in the encoding above. If the Dyck word has a single outermost pair, its root must receive label 1. Deleting that root leaves the same partition, because the remaining closes-before-opens counts are unchanged and one zero part is dropped. This reduces $N$ without changing the count. It covers the empty partition, whose forest is a single chain at each positive size.
+
+Otherwise split at a boundary between nonempty consecutive forests, with $j$ vertices on the left and $i=N-j$ on the right. Then $h_{j+1}=j$, so row $i$ ends at column $j$. This box has $i+j=N$ and maximizes that sum by the staircase bound. The left forest has encoding given by the last $j$ rows of the original partition, namely $\mu$ after deleting the first $i$ rows. For the right forest subtract $j$ from each of its $i$ counts, giving $\nu$ after deleting the first $j$ columns. The choices of which $j$ labels go to the left contribute $\binom Nj$. On each side relabel in increasing order and apply induction. The result is $\binom{i+j}{j}f(\mu)f(\nu)=f(\lambda)$. Summing the weights of all shapes proves (1).
+
+The two forest interpretations used here have published predecessors. The argument connects them by the explicit area identity to obtain the coefficient formula and its precise stabilization range. No claim of historical priority is made.
+
+**Verification.** [MeeussenForestCoefficients.lean](MeeussenForestCoefficients.lean) proves for every ordered forest that the sum of the reverse partition coordinates and the sum of vertex depths equals the triangular number, in an equivalent doubled form. The labelling argument and coefficient extraction are written proofs. An [independent exact checker](check_meeussen_forest.py) compares Fayers' original Young-diagram recurrence with the multinomial coefficient recurrence from the differential equation. It verifies all coefficients through $N=12$.
